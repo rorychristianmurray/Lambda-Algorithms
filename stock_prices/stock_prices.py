@@ -11,32 +11,38 @@ def find_max_profit(prices):
     # note first index of array (base case) as the current_mindex
     # iterate over the prices list
 
-    # base case for min
+    # base case for min and max
     min = prices[0]
     mindex = 0
+    max = prices[1]
+    max_profit = max - min
 
-    for i in range(len(prices) - 1):
-        print(f"min val before : {min}")
-        print(f"mindex before : {mindex}")
+    for i in range(mindex, len(prices) - 1):
         if prices[i] < min:
             min = prices[i]
             mindex = i
-            print(f"min val after : {min}")
-            print(f"mindex after : {min}")
+            print(f"min val after : {min}\n")
+            print(f"mindex after : {min}\n")
+            # call find_max_profits again
+
+        elif prices[i] - min > max_profit:
+            print(f"prices[i] {prices[i]} min {min}\n")
+            max_profit = prices[i] - min
+            print(f"max profit after : {max_profit}\n")
 
     # iterate over the array from range(current_mindex, len(arr) - 1)
     # Compute profit and note it as current_max_profit
     # If encounter larger profit, note it as current_max_profit
-        # for i in range(mindex, len(arr) - 1):
 
-    print(f"global min : {min}")
-    print(f"global mindex : {mindex}")
+    print(f"global min : {min}\n")
+    print(f"global mindex : {mindex}\n")
+    print(f"global max_profit : {max_profit}\n")
 
     # Continue original loop
     # Do we encounter a value that is smaller than the `current_min`?
     # If yes, then overwrite the current_min and run the profit loop again from range(current_min, len(arr) - 1)
 
-    return min
+    return max_profit
 
 
 # if __name__ == '__main__':
