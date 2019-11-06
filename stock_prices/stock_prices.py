@@ -18,43 +18,40 @@ def find_max_profit(prices):
     max_profit = max - min
 
     for i in range(mindex, len(prices) - 1):
+        # Continue original loop
+        # Do we encounter a value that is smaller than the `current_min`?
+        # If yes, then overwrite the current_min and run the profit loop again from range(current_min, len(arr) - 1)
         if prices[i] < min:
             min = prices[i]
             mindex = i
-            print(f"min val after : {min}\n")
-            print(f"mindex after : {min}\n")
-            # call find_max_profits again
-
-        elif prices[i] - min > max_profit:
-            print(f"prices[i] {prices[i]} min {min}\n")
-            max_profit = prices[i] - min
-            print(f"max profit after : {max_profit}\n")
+            print(f"min val after : {min}\n mindex after : {min}\n")
 
     # iterate over the array from range(current_mindex, len(arr) - 1)
     # Compute profit and note it as current_max_profit
     # If encounter larger profit, note it as current_max_profit
 
+        elif prices[i] - min > max_profit:
+            print(f"prices[i] {prices[i]}\n min {min}\n")
+            max_profit = prices[i] - min
+            print(f"max profit after : {max_profit}\n")
+
     print(f"global min : {min}\n")
     print(f"global mindex : {mindex}\n")
     print(f"global max_profit : {max_profit}\n")
 
-    # Continue original loop
-    # Do we encounter a value that is smaller than the `current_min`?
-    # If yes, then overwrite the current_min and run the profit loop again from range(current_min, len(arr) - 1)
-
     return max_profit
 
 
-# if __name__ == '__main__':
-#     # This is just some code to accept inputs from the command line
-#     parser = argparse.ArgumentParser(
-#         description='Find max profit from prices.')
-#     parser.add_argument('integers', metavar='N', type=int,
-#                         nargs='+', help='an integer price')
-#     args = parser.parse_args()
+if __name__ == '__main__':
+    # This is just some code to accept inputs from the command line
+    parser = argparse.ArgumentParser(
+        description='Find max profit from prices.')
+    parser.add_argument('integers', metavar='N', type=int,
+                        nargs='+', help='an integer price')
+    args = parser.parse_args()
 
-#     print("A profit of ${profit} can be made from the stock prices {prices}.".format(
-#         profit=find_max_profit(args.integers), prices=args.integers))
+    print("A profit of ${profit} can be made from the stock prices {prices}.".format(
+        profit=find_max_profit(args.integers), prices=args.integers))
 
 
 test1 = find_max_profit(lister)
