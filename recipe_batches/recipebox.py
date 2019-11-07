@@ -47,6 +47,8 @@ def recipe_batches(recipe, ingredients):
         if i not in larder_keys:
             return f"we do not have {i} in the larder and cannot make this recipe"
 
+    checker = [l + r for r in recipe_items for l in larder_items]
+
     print(f"recipe_keys : {recipe_keys}")
     print(f"larder_keys : {larder_keys}")
 
