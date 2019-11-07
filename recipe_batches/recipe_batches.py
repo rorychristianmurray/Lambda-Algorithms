@@ -10,6 +10,7 @@ l2 = dict([('milk', 5), ('sugar', 120), ('butter', 500), ])
 
 
 def recipe_batches(recipe, ingredients):
+    # print recipe and larder
     print(f"recipe : {recipe}\n larder : {ingredients}\n")
 
     # get k:v using items() method
@@ -21,7 +22,16 @@ def recipe_batches(recipe, ingredients):
     for i, v in enumerate(recipe):
         print(f"i : {i}\nv : {v}\n")
 
-    return 0
+    # loop over both recipe and larder sequence
+    # by pairing them with a zip() function
+    for ingredient, amount in zip(r1, l1):
+        print(
+            f"The recipe calls for {ingredient}, we have {amount} in the larder")
+
+    # establsh base case
+    batches = 0
+
+    return batches
 
 
 # if __name__ == '__main__':
